@@ -22,3 +22,14 @@
   existing_members = {"C002", "C003", "C004"}
   valid_winners = event_applicants & existing_members
   print(f"당첨된 기존 회원 명단: {valid_winners}")
+
+  ##3 월별 매출액을 1월부터 12월까지 순서대로 저장하고 순회하는 데이터
+  1) 선택한 자료구조: 리스트('List')
+  2) 선택 근거:
+  - 월별 매출액은 삽입된 순서가 고유하게 유지되어야 하며, 순서대로 순회하거나 인덱스를 통해 특정 월의 데이터에 접근하여 연산하기에 리스트가 가장 적합합니다.
+  - 셋은 데이터의 순서가 존재하지 않아 월별 순서 보장이 불가능하고, 딕셔너리는 키-값 구조로 순차적인 인덱스 순회 목적에 부합하지 않으므로 배제합니다.
+```Python
+ monthly_sales = [1200000, 1500000, 1350000, 1600000]
+ for month, sales in enumerate(monthly_sales, start=1):
+ print(f"{month}월 매출: {sales:,}원")
+ 
