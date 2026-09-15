@@ -43,3 +43,15 @@
   store_location = (37.5519, 126.9410)
 # store_location[0] = 38.0  # TypeError 발생 (불변성 보장)
   print(f"매장 위도: {store_location[0]}, 경도: {store_location[1]}")
+
+  ##5 1,000만 줄짜리 웹 서버 접속 로그 파일에서 특정 조건의 줄 수를 세는 작업 (자료구조 + 처리 방식 관점에서 서술)
+  1) 선택한 자료구조 및 처리 방식: 이터레이터와 제너레이터를 활용한 방식
+  2) 선택 근거: 
+  - 1000만 줄에 달하는 대용량 로그 파일을 한 번에 리스트나 딕셔너리로 메모리에 올리면 메모리 용량을 초과하여 Out of Memory 에러가 발생하므로, 전체 데이터를 한꺼번에 올리는 방식을 배제합니다.
+  - 대신 파이썬의 파일 객체 자체인 이터레이터를 활용해 한 줄씩 순차적으로 읽어 들이고 메모리 사용량을 최소한으로 고정하는 제너레이터 구조를 적용해야 안정적으로 처리할 수 있습니다.
+  3) 예시 코드:
+  ```Python
+  def count_error_logs(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        return sum(1 for line in f if "ERROR" in line)
+# print(f"에러 로그 수: {count_error_logs('server.log')}건")
