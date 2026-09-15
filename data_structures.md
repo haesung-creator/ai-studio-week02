@@ -32,4 +32,14 @@
  monthly_sales = [1200000, 1500000, 1350000, 1600000]
  for month, sales in enumerate(monthly_sales, start=1):
  print(f"{month}월 매출: {sales:,}원")
- 
+
+ ##4 한 번 발급되면 절대 변경되어서는 안 되는 (위도, 경도) 매장 좌표
+ 1) 선택한 자료구조: 튜플('tuple')
+ 2) 선택 근거: 
+ - 튜플은 생성 후 값을 변경할 수 없는 불변한 성격을 가지므로, 매장 좌표처럼 한 번 설정되면 절대 바뀌면 안 되는 데이터를 안전하게 보호하는데 적합합니다.
+ - 리스트를 사용할 경우, 실수로 요소를 수정하거나 덮어쓸 위험이 있으므로 데이터를 보호하기 위해 리스트는 배제합니다.
+ 3) 예시 코드:
+ ```Python
+  store_location = (37.5519, 126.9410)
+# store_location[0] = 38.0  # TypeError 발생 (불변성 보장)
+  print(f"매장 위도: {store_location[0]}, 경도: {store_location[1]}")
